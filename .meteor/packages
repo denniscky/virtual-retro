@@ -33,3 +33,4 @@ twbs:bootstrap
 accounts-ui
 accounts-password
 gwendall:auth-client-callbacks
+check

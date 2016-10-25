@@ -1,3 +1,9 @@
 Meteor.publish('postIts', function(meetingId) {
-	return PostIts.find({meeting: meetingId});
+	check(meetingId, String);
+	return PostIts.find({ meeting: meetingId });
 });
+
+Meteor.publish('meetings', function() {
+	return Meetings.find({});
+});
+

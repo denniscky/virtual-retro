@@ -1,0 +1,9 @@
+<template name="MeetingsIndex">
+			{{> quickForm collection="Meetings" id="insertMeetingForm" type="insert" class="new-meeting-form"}}
+	<h2>Upcoming Retro Session</h2>
+	<a>{{activeMeeting.date}}</a>
+	<h2>Past Retro Sessions</h2>
+	{{#each meeting in pastMeetings}}
+		<li><a>{{meeting.date}}</a></li>
+	{{/each}}
+</template>

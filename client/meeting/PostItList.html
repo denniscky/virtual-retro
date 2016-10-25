@@ -1,6 +1,0 @@
-<template name="PostItList">
-			{{> quickForm collection="PostIts" id="insertPostItForm" type="insert" class="new-post-it-form"}}
-	{{#each postIt in postIts}}
-		<p>{{{postIt.text}}}</p>
-	{{/each}}
-</template>

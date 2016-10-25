@@ -33,6 +33,15 @@ Schema.PostIt = new SimpleSchema({
 		autoform: {
 			rows: 5
 		}
+	},
+	createdAt: {
+		type: Date,
+		autoValue: () => {
+			return new Date();
+		},
+		autoform: {
+			type: "hidden"
+		}
 	}
 });
 

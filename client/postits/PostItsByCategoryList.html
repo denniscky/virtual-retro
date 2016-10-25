@@ -1,0 +1,6 @@
+<template name="PostItsByCategoryList">
+	<h2>{{category}}</h2>
+	{{#each postIt in postItsByCategory category}}
+		<p>{{postIt.text}}</p>
+	{{/each}}
+</template>
