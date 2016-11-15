@@ -35,3 +35,4 @@ accounts-password
 gwendall:auth-client-callbacks
 check
 momentjs:moment
+fortawesome:fontawesome

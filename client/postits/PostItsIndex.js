@@ -21,6 +21,9 @@ AutoForm.hooks({
         doc.meeting = FlowRouter.getParam('meetingId');
         return doc;
       }
+    },
+    onSuccess: function(formType, result) {
+      $('#myModal').modal('hide');
     }
   }
 });

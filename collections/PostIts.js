@@ -17,35 +17,60 @@ Schema.PostIt = new SimpleSchema({
 		autoValue: function() {
 			return this.userId;
 		},
-		autoform: {
-			type: "hidden"
-		}
+		autoform: { type: "hidden" }
 	},
 	meeting: {
 		type: String,
-		autoform: {
-			type: "hidden"
-		}
+		autoform: { type: "hidden" }
 	},
 	category: {
 		type: String,
 		allowedValues: ["Celebration", "Happy", "Sad", "Idea"]
 	},
 	text: {
-		type: String,
-		autoform: {
-			rows: 5
-		}
+		type: String
 	},
 	createdAt: {
 		type: Date,
 		autoValue: () => {
 			return new Date();
 		},
-		autoform: {
-			type: "hidden"
-		}
+		autoform: { type: "hidden" }
+	},
+	followUp: {
+		type: String,
+		optional: true,
+		allowedValues: ["Action", "Thank you"],
+		autoform: { type: "hidden" }
+	},
+	followUpComment: {
+		type: String,
+		optional: true,
+		autoform: { type: "hidden" }
 	}
 });
 
 PostIts.attachSchema(Schema.PostIt);
+
+Meteor.methods({
+	updatePostItFollowup: function(id, followUp) {
+		PostIts.update(id, {
+			$set: {
+				followUp: followUp
+			}
+		});
+	},
+
+	updatePostItComment: function(id, followUpComment) {
+		console.log('updatePostItComment', id, followUpComment);
+		PostIts.update(id, {
+			$set: {
+				followUpComment: followUpComment
+			}
+		});
+	},
+
+	deletePostIt: function(id) {
+		PostIts.remove(id);
+	}
+});

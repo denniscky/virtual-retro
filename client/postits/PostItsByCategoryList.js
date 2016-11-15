@@ -1,6 +1,12 @@
 Template.PostItsByCategoryList.helpers({
 	postItsByCategory: function(category) {
-    console.log("by cat", this);
 		return PostIts.find({ category: category });
 	}
+});
+
+Template.PostItsByCategoryList.events({
+  'click .btn-new-post-it': function() {
+    $('#myModal').modal('show');
+    $('select[name="category"]').val(this.category);
+  }
 });

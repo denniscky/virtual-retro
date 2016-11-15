@@ -1,6 +1,7 @@
 <template name="PostItsByCategoryList">
-	<h3>{{category}}</h3>
-	{{#each postIt in postItsByCategory category}}
-		{{> PostIt postIt meetingActive=meetingActive}}
-	{{/each}}
+  <h3>{{category}} <a class="btn btn-new-post-it">+ Add a Post-It</a></h3>
+  {{#each postIt in postItsByCategory category}}
+    {{> PostIt postIt meetingActive=meeting.isActive}}
+  {{/each}}
+  <hr>
 </template>

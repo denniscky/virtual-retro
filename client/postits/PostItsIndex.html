@@ -1,13 +1,30 @@
 <template name="PostItsIndex">
-  {{#if meeting.isActive}}
-	  {{> quickForm collection="PostIts" 
-                  id="insertPostItForm" type="insert" class="new-post-it-form"}}
-  {{else}}
+  <div class="modal" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">New Post-It</h4>
+        </div>
+        <div class="modal-body">
+          {{> quickForm collection="PostIts" id="insertPostItForm" type="insert" class="new-post-it-form"}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{! #if meeting.isActive}}
+	  {{! > quickForm collection="PostIts" id="insertPostItForm" type="insert" class="new-post-it-form"}}
+  {{! else}}
     <h2>Retrospective for {{ISOToHuman meeting.date}}</h2>
-  {{/if}}
-  isactive {{meeting.date}}
-	{{> PostItsByCategoryList category='Celebration' meetingActive=meeting.date}}
-	{{> PostItsByCategoryList category='Happy' meetingActive=meeting.date}}
-  {{> PostItsByCategoryList category='Sad' meetingActive=meeting.date}}
-  {{> PostItsByCategoryList category='Idea' meetingActive=meeting.date}}
+    <hr>
+  {{! /if}}
+	{{> PostItsByCategoryList category='Celebration' meetingActive=meeting.isActive}}
+	{{> PostItsByCategoryList category='Happy' meetingActive=meeting.isActive}}
+  {{> PostItsByCategoryList category='Sad' meetingActive=meeting.isActive}}
+  {{> PostItsByCategoryList category='Idea' meetingActive=meeting.isActive}}
 </template>
