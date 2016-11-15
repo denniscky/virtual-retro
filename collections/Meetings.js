@@ -22,3 +22,13 @@ Schema.Meeting = new SimpleSchema({
 });
 
 Meetings.attachSchema(Schema.Meeting);
+
+Meteor.methods({
+	finalizeMeeting: function(id) {
+		Meetings.update(id, {
+			$set: {
+				isActive: false
+			}
+		});
+	}
+});

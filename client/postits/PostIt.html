@@ -1,0 +1,9 @@
+<template name="PostIt">
+  <p>
+    {{#if isCreatedByUser}}
+      {{text}}
+    {{else}}
+      Post It created by {{authorName}}
+    {{/if}}
+  </p>
+</template>

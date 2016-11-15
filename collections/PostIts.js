@@ -22,7 +22,10 @@ Schema.PostIt = new SimpleSchema({
 		}
 	},
 	meeting: {
-		type: String
+		type: String,
+		autoform: {
+			type: "hidden"
+		}
 	},
 	category: {
 		type: String,

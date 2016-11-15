@@ -1,0 +1,13 @@
+<template name="PostItsIndex">
+  {{#if meeting.isActive}}
+	  {{> quickForm collection="PostIts" 
+                  id="insertPostItForm" type="insert" class="new-post-it-form"}}
+  {{else}}
+    <h2>Retrospective for {{ISOToHuman meeting.date}}</h2>
+  {{/if}}
+  isactive {{meeting.date}}
+	{{> PostItsByCategoryList category='Celebration' meetingActive=meeting.date}}
+	{{> PostItsByCategoryList category='Happy' meetingActive=meeting.date}}
+  {{> PostItsByCategoryList category='Sad' meetingActive=meeting.date}}
+  {{> PostItsByCategoryList category='Idea' meetingActive=meeting.date}}
+</template>

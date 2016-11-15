@@ -1,5 +1,6 @@
 Template.PostItsByCategoryList.helpers({
-	postItsByCategory: (category) => {
+	postItsByCategory: function(category) {
+    console.log("by cat", this);
 		return PostIts.find({ category: category });
 	}
 });
