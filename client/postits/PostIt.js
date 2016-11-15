@@ -38,7 +38,8 @@ Template.PostIt.events({
   },
 
   'click .btn-edit': function() {
-    Meteor.call('updatePostItFollowup', this._id, 'Thank you');
+    Template.parentData().modalDataVar.set({ editRecord: this });
+    $('#myModal').modal('show');
   },
 
   'click .btn-delete': function() {

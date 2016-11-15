@@ -1,7 +1,21 @@
 <template name="PostItsByCategoryList">
-  <h3>{{category}} <a class="btn btn-new-post-it">+ Add a Post-It</a></h3>
-  {{#each postIt in postItsByCategory category}}
-    {{> PostIt postIt meetingActive=meeting.isActive}}
-  {{/each}}
+  <h3>
+    {{category}} 
+    <a class="btn btn-new-post-it">+ Add a Post-It</a>
+  </h3>
+  {{#if meetingActive}}
+    {{#each postIt in myPostItsByCategory category}}
+      {{> PostIt postIt}}
+    {{/each}}
+  {{else}}
+    {{#each postIt in postItsByCategory category}}
+      {{> PostIt postIt}}
+    {{/each}}
+  {{/if}}
+  {{#if meetingActive}}
+    {{#each summary in otherPostItsSummary category}}
+      <span><i>{{summary.authorName}}</i> <span class="badge">{{summary.count}}</span></span>
+    {{/each}}
+  {{/if}}
   <hr>
 </template>

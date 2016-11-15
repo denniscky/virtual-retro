@@ -1,7 +1,6 @@
 Template.MeetingsIndex.onCreated(function() {
-	let self = this;
-	self.autorun(function() {
-		self.subscribe('meetings');
+	this.autorun(() => {
+		this.subscribe('meetings');
 	});
 });
 
