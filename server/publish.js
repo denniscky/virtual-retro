@@ -17,3 +17,7 @@ Meteor.publish('users', function() {
   // http://stackoverflow.com/questions/31365580/meteor-get-usernames-from-userid-easier-method
   return Meteor.users.find({});
 });
+
+Meteor.publish('emojis', function() {
+  return Emojis.find();
+});

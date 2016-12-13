@@ -3,7 +3,7 @@
     {{#if ../meetingActive}}
       <div class='col-xs-12'>
         <p>
-          {{text}}
+          {{#emoji}}{{text}}{{/emoji}}
           {{#if isCreatedByUser}}
             <a class='btn btn-sm btn-edit'><i class='fa fa-pencil'></i></a>
             <a class='btn btn-sm btn-delete'><i class='fa fa-remove'></i></a>
@@ -13,7 +13,7 @@
     {{else}}
       <div class='col-xs-9'>
         <p>
-          {{text}}
+          {{#emoji}}{{text}}{{/emoji}}
           <i>({{authorName}})</i>
           {{#if isCreatedByUser}}
             <a class='btn btn-sm btn-edit'><i class='fa fa-pencil'></i></a>
@@ -33,14 +33,14 @@
                 <b>Person(s) to follow up: <input name='responsible' type='text' value='{{followUpResponsible}}'></b>
                 <button type='submit' class='btn btn-primary btn-xs btn-save-comment pull-right'>Save</button>
               </div>
-              <textarea name='comment' class="form-control" rows='2'>{{followUpComment}}</textarea>
+              <textarea name='comment' class="form-control" rows='2' placeholder='You can use emojis like :cat: :dog: ...'>{{followUpComment}}</textarea>
             </form>
           {{else}}
             <div>
               <b>Person(s) to follow up: {{followUpResponsible}}</b>
               <button class='btn btn-primary btn-xs btn-edit-comment pull-right'>Edit</button>
             </div>
-            <p class='p-formatted'>{{followUpComment}}</p>
+            <p class='p-formatted'>{{#emoji}}{{followUpComment}}{{/emoji}}</p>
           {{/if}}
         </div>
       {{/if}}

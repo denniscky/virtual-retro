@@ -28,7 +28,8 @@ Schema.PostIt = new SimpleSchema({
 		allowedValues: ["Celebration", "Happy", "Sad", "Idea"]
 	},
 	text: {
-		type: String
+		type: String,    
+		autoform: { placeholder: "You can use emojis like :cat: :dog: ..." }
 	},
 	createdAt: {
 		type: Date,
