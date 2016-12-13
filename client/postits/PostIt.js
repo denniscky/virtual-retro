@@ -61,9 +61,10 @@ Template.PostIt.events({
     event.preventDefault();
  
     const target = event.target;
-    const comment = target.text.value;
+    const comment = target.comment.value;
+    const responsible = target.responsible.value;
 
-    Meteor.call('updatePostItComment', this._id, comment);
+    Meteor.call('updatePostItComment', this._id, comment, responsible);
     Template.instance().isEditingComment.set(false);
   },
 });

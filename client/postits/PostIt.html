@@ -14,6 +14,7 @@
       <div class='col-xs-9'>
         <p>
           {{text}}
+          <i>({{authorName}})</i>
           {{#if isCreatedByUser}}
             <a class='btn btn-sm btn-edit'><i class='fa fa-pencil'></i></a>
             <a class='btn btn-sm btn-delete'><i class='fa fa-remove'></i></a>
@@ -25,21 +26,21 @@
         <button class='btn btn-sm btn-thank-you pull-right {{btnThankYouClass}}'>Thank you</button>
       </div>
       {{#if followUpIsAction}}
-        <div class='col-xs-offset-1 col-xs-7 well well-sm'>
+        <div class='col-xs-offset-1 col-xs-8 well well-sm'>
           {{#if isEditingComment}}
             <form class='form post-it-comment-form'>
               <div>
-                Comments: 
-                <button class='btn btn-primary btn-xs btn-save-comment pull-right'>Save</button>
+                <b>Person(s) to follow up: <input name='responsible' type='text' value='{{followUpResponsible}}'></b>
+                <button type='submit' class='btn btn-primary btn-xs btn-save-comment pull-right'>Save</button>
               </div>
-              <textarea name='text' class="form-control" rows='2'>{{followUpComment}}</textarea>
+              <textarea name='comment' class="form-control" rows='2'>{{followUpComment}}</textarea>
             </form>
           {{else}}
             <div>
-              Comments: 
+              <b>Person(s) to follow up: {{followUpResponsible}}</b>
               <button class='btn btn-primary btn-xs btn-edit-comment pull-right'>Edit</button>
             </div>
-            <p>{{followUpComment}}</p>
+            <p class='p-formatted'>{{followUpComment}}</p>
           {{/if}}
         </div>
       {{/if}}

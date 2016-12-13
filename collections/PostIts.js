@@ -47,6 +47,11 @@ Schema.PostIt = new SimpleSchema({
 		type: String,
 		optional: true,
 		autoform: { type: "hidden" }
+	},
+	followUpResponsible: {
+		type: String,
+		optional: true,
+		autoform: { type: "hidden" }
 	}
 });
 
@@ -61,10 +66,11 @@ Meteor.methods({
 		});
 	},
 
-	updatePostItComment: function(id, followUpComment, callback) {
+	updatePostItComment: function(id, followUpComment, followUpResponsible) {
 		PostIts.update(id, {
 			$set: {
-				followUpComment: followUpComment
+				followUpComment: followUpComment,
+				followUpResponsible: followUpResponsible
 			}
 		});
 	},
