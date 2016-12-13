@@ -15,16 +15,25 @@ Schema.Meeting = new SimpleSchema({
 	title: {
 		type: String,
 	  custom: function () {
-	    if (Meteor.isClient && this.isSet) {
-	      Meteor.call("meetingIsTitleAvailable", this.value, function (error, result) {
-	        if (!result) {
-	          Meteor.meetings
-	          	.simpleSchema()
-	          	.namedContext("insertMeetingForm")
-	          	.addInvalidKeys([{name: "title", type: "notUnique"}]);
-	        }
-	      });
-	    }
+	  	if (Meetings.find({ isActive: true, title: this.value }).count() > 0) {
+        Meetings
+        	.simpleSchema()
+        	.namedContext("insertMeetingForm")
+        	.addInvalidKeys([{name: "title", type: "notUnique"}]);
+        return "notUnique";
+	  	}
+	    // if (Meteor.isClient && this.isSet) {
+	    //   Meteor.call("meetingIsTitleAvailable", this.value, function (error, result) {
+	    //     if (!result) {
+	    //     	console.log("bad result!");
+	    //       Meetings
+	    //       	.simpleSchema()
+	    //       	.namedContext("insertMeetingForm")
+	    //       	.addInvalidKeys([{name: "title", type: "notUnique"}]);
+	    //       return "notUnique";
+	    //     }
+	    //   });
+	    // }
 	  }
 	},
 	isActive: {
@@ -50,7 +59,5 @@ Meteor.methods({
 				isActive: false
 			}
 		});
-	},
-
-
+	}
 });
