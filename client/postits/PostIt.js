@@ -1,7 +1,7 @@
 Template.PostIt.onCreated(function() {
-  let self = this;
-  self.autorun(function() {
-    self.subscribe('users');
+  this.isEditingComment = new ReactiveVar();
+  this.autorun(() => {
+    this.subscribe('users');
   });
 });
 
@@ -25,12 +25,17 @@ Template.PostIt.helpers({
 
   btnThankYouClass: function() {
     return (this.followUp === 'Thank you') ? "btn-primary" : "btn-default";
+  },
+
+  isEditingComment: function() {
+    return Template.instance().isEditingComment.get();
   }
 })
 
 Template.PostIt.events({
   'click .btn-action': function() {
     Meteor.call('updatePostItFollowup', this._id, 'Action');
+    Template.instance().isEditingComment.set(true);
   },
 
   'click .btn-thank-you': function() {
@@ -48,6 +53,10 @@ Template.PostIt.events({
     }
   },
 
+  'click .btn-edit-comment': function() {
+    Template.instance().isEditingComment.set(true);
+  },
+
   'submit .post-it-comment-form': function(event) {
     event.preventDefault();
  
@@ -55,5 +64,6 @@ Template.PostIt.events({
     const comment = target.text.value;
 
     Meteor.call('updatePostItComment', this._id, comment);
+    Template.instance().isEditingComment.set(false);
   },
 });

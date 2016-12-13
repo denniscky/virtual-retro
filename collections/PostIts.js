@@ -61,7 +61,7 @@ Meteor.methods({
 		});
 	},
 
-	updatePostItComment: function(id, followUpComment) {
+	updatePostItComment: function(id, followUpComment, callback) {
 		PostIts.update(id, {
 			$set: {
 				followUpComment: followUpComment
