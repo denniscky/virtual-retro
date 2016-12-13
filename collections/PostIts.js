@@ -15,7 +15,9 @@ Schema.PostIt = new SimpleSchema({
 	author: {
 		type: String,
 		autoValue: function() {
-			return this.userId;
+      if (this.isInsert) {
+        return this.userId;
+      }
 		},
 		autoform: { type: "hidden" }
 	},
@@ -34,7 +36,9 @@ Schema.PostIt = new SimpleSchema({
 	createdAt: {
 		type: Date,
 		autoValue: () => {
-			return new Date();
+      if (this.isInsert) {
+			  return new Date();
+      }
 		},
 		autoform: { type: "hidden" }
 	},

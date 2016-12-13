@@ -32,7 +32,9 @@ Schema.Meeting = new SimpleSchema({
 	createdAt: {
 		type: Date,
 		autoValue: () => {
-			return new Date();
+      if (this.isInsert) {
+			  return new Date();
+      }
 		},
 		autoform: { type: "hidden" }
 	}
