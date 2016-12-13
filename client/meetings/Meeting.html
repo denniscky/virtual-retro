@@ -1,6 +1,14 @@
 <template name="Meeting">
-  <a href="/meetings/{{_id}}/post-its">{{ISOToHuman date}}</a>
-  {{#if isActive}}
-    <button class="btn-finalize btn btn-sm btn-primary">Finalize</button>
-  {{/if}}
+  <td>
+    <a href="/meetings/{{_id}}/post-its">
+      {{#if title}}
+        {{title}}
+      {{else}}
+        {{ISOToHuman date}}
+      {{/if}}
+    </a>
+    {{#if isActive}}
+      <button class="btn-finalize btn btn-sm btn-primary pull-right">Finalize</button>
+    {{/if}}
+  </td>
 </template>

@@ -1,14 +1,46 @@
 <template name="MeetingsIndex">
-	{{> quickForm collection="Meetings" id="insertMeetingForm" type="insert" class="new-meeting-form"}}
-	<h2>Upcoming Retro Session</h2>
-  {{#if activeMeeting}}
-    {{> Meeting activeMeeting}}
-  {{else}}
-    No upcoming retro meetings scheduled
-  {{/if}}
+  <div class="modal" id="meetingModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">New Session</h4>
+        </div>
+        <div class="modal-body">
+          {{#if modalData.editRecord}}
+            {{> quickForm collection="Meetings" id="updateMeetingForm" type="update" doc=modalData.editRecord}}
+          {{else}}
+            {{> quickForm collection="Meetings" id="insertMeetingForm" type="insert"}}
+          {{/if}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	{{! > quickForm collection="Meetings" id="insertMeetingForm" type="insert" class="new-meeting-form"}}
+	<h2>
+    Upcoming Retro Session
+    <a class="btn btn-new-meeting">+ Add a Session</a>
+  </h2>
+  <table class='table'>
+    <tbody>
+      {{#each meeting in activeMeetings}}
+        <tr>{{> Meeting meeting}}</tr>
+      {{else}}
+        No upcoming retro meetings scheduled
+      {{/each}}
+    </tbody>
+  </table>
 	<!-- <a href="/meetings/{{activeMeeting._id}}/post-its">{{activeMeeting.date}}</a> -->
 	<h2>Past Retro Sessions</h2>
-	{{#each meeting in pastMeetings}}
-    <li>{{> Meeting meeting}}</li>
-	{{/each}}
+  <table class='table'>
+    <tbody>
+    	{{#each meeting in pastMeetings}}
+        <tr>{{> Meeting meeting}}</tr>
+    	{{/each}}
+    </tbody>
+  </table>
 </template>

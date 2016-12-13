@@ -20,14 +20,16 @@
     </div>
   </div>
 
-  {{! #if meeting.isActive}}
-	  {{! > quickForm collection="PostIts" id="insertPostItForm" type="insert" class="new-post-it-form"}}
-  {{! else}}
-    <h2>Retrospective for {{ISOToHuman meeting.date}}</h2>
-    <hr>
-  {{! /if}}
-	{{> PostItsByCategoryList category='Celebration' meetingActive=meeting.isActive modalDataVar=modalDataVar}}
-	{{> PostItsByCategoryList category='Happy' meetingActive=meeting.isActive modalDataVar=modalDataVar}}
-  {{> PostItsByCategoryList category='Sad' meetingActive=meeting.isActive modalDataVar=modalDataVar}}
-  {{> PostItsByCategoryList category='Idea' meetingActive=meeting.isActive modalDataVar=modalDataVar}}
+  <h2>
+    {{#if meeting.title}}
+      {{meeting.title}}
+    {{else}}
+      Retrospective for {{ISOToHuman meeting.date}}
+    {{/if}}
+  </h2>
+  <hr>
+	{{> PostItsByCategoryList category='Celebration' meetingActive=meeting.isActive modalDataReactive=modalDataReactive}}
+	{{> PostItsByCategoryList category='Happy' meetingActive=meeting.isActive modalDataReactive=modalDataReactive}}
+  {{> PostItsByCategoryList category='Sad' meetingActive=meeting.isActive modalDataReactive=modalDataReactive}}
+  {{> PostItsByCategoryList category='Idea' meetingActive=meeting.isActive modalDataReactive=modalDataReactive}}
 </template>

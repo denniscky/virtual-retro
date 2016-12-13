@@ -38,8 +38,8 @@ Template.PostIt.events({
   },
 
   'click .btn-edit': function() {
-    Template.parentData().modalDataVar.set({ editRecord: this });
-    $('#myModal').modal('show');
+    Template.parentData().modalDataReactive.set({ editRecord: this });
+    $('#postItModal').modal('show');
   },
 
   'click .btn-delete': function() {

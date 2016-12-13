@@ -12,12 +12,32 @@ Meetings.allow({
 Schema = {};
 
 Schema.Meeting = new SimpleSchema({
-	date: {
-		type: Date
+	title: {
+		type: String,
+	  custom: function () {
+	    if (Meteor.isClient && this.isSet) {
+	      Meteor.call("meetingIsTitleAvailable", this.value, function (error, result) {
+	        if (!result) {
+	          Meteor.meetings
+	          	.simpleSchema()
+	          	.namedContext("insertMeetingForm")
+	          	.addInvalidKeys([{name: "title", type: "notUnique"}]);
+	        }
+	      });
+	    }
+	  }
 	},
 	isActive: {
 		type: Boolean,
-		defaultValue: false
+		defaultValue: true,
+		autoform: { type: "hidden" }
+	},
+	createdAt: {
+		type: Date,
+		autoValue: () => {
+			return new Date();
+		},
+		autoform: { type: "hidden" }
 	}
 });
 
@@ -30,5 +50,7 @@ Meteor.methods({
 				isActive: false
 			}
 		});
-	}
+	},
+
+
 });

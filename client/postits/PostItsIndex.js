@@ -23,7 +23,7 @@ Template.PostItsIndex.helpers({
     return Template.instance().modalData.get();
   },
 
-  modalDataVar: function() {
+  modalDataReactive: function() {
     return Template.instance().modalData;
   }
 });

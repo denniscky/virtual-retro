@@ -34,7 +34,7 @@ Template.PostItsByCategoryList.helpers({
 
 Template.PostItsByCategoryList.events({
   'click .btn-new-post-it': function() {
-    this.modalDataVar.set({ editRecord: null });
+    this.modalDataReactive.set({ editRecord: null });
     $('#postItModal').modal('show');
     $('select[name="category"]').val(this.category);
   }
