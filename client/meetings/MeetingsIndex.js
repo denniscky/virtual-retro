@@ -54,7 +54,6 @@ AutoForm.hooks({
     },
     before: {
       update: function(doc) {
-        debugger;
         // I can't get around it: using autoform, a 'false' boolean is translated to 'unset this boolean'
         // So here is a workaround for you <3
         if (doc.$unset && (doc.$unset.isActive === "")) {
