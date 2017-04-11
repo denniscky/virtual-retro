@@ -40,9 +40,6 @@ Schema.Meeting = new SimpleSchema({
       if (this.isInsert) {
 			  return new Date();
       }
-      else if (!this.isSet) { // backwards compatibility
-        return new Date(2000,0,1);
-			}
 		},
 		autoform: { type: "hidden" }
 	}
