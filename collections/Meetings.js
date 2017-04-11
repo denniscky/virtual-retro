@@ -29,6 +29,11 @@ Schema.Meeting = new SimpleSchema({
 		defaultValue: true,
 		autoform: { type: "hidden" }
 	},
+  isDeleted: {
+    type: Boolean,
+    optional: true,
+    autoform: { type: "hidden" }
+  },
 	createdAt: {
 		type: Date,
 		autoValue: function() {
@@ -49,5 +54,13 @@ Meteor.methods({
 				isActive: false
 			}
 		});
-	}
+	},
+
+  deleteMeeting: function(id) {
+    Meetings.update(id, {
+      $set: {
+        isDeleted: true
+      }
+    });
+  }
 });

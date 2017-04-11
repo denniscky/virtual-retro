@@ -1,5 +1,4 @@
 Template.PostItsByCategoryList.onCreated(function() {
-  this.modalData = new ReactiveVar();
   this.autorun(() => {
     this.subscribe('users');
   });
@@ -34,7 +33,6 @@ Template.PostItsByCategoryList.helpers({
 
 Template.PostItsByCategoryList.events({
   'click .btn-new-post-it': function() {
-    this.modalDataReactive.set({ editRecord: null });
     $('#postItModal').modal('show');
     $('select[name="category"]').val(this.category);
   }

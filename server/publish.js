@@ -4,7 +4,7 @@ Meteor.publish('postIts', function(meetingId) {
 });
 
 Meteor.publish('meetings', function() {
-	return Meetings.find({});
+	return Meetings.find({isDeleted: {$ne: true}});
 });
 
 Meteor.publish('meeting', function(id) {

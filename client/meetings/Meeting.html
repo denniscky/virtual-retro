@@ -1,13 +1,15 @@
 <template name="Meeting">
   <td>
-    <a href="/meetings/{{_id}}/post-its">
-      {{#if title}}
-        {{title}}
+    <a href="/meetings/{{meeting._id}}/post-its">
+      {{#if meeting.title}}
+        {{meeting.title}}
       {{else}}
-        {{ISOToHuman date}}
+        {{ISOToHuman meeting.date}}
       {{/if}}
     </a>
-    {{#if isActive}}
+    <a class='btn btn-sm btn-delete pull-right'><i class='fa fa-remove'></i></a>
+    <a class='btn btn-sm btn-edit pull-right'><i class='fa fa-pencil'></i></a>
+    {{#if meeting.isActive}}
       <button class="btn-finalize btn btn-sm btn-primary pull-right">Finalize</button>
     {{/if}}
   </td>

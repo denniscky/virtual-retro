@@ -38,12 +38,18 @@ AutoForm.hooks({
     },
     onSuccess: function(formType, result) {
       $('#postItModal').modal('hide');
+    },
+    onError: function(formType, error) {
+      console.log(error);
     }
   },
 
   updatePostItForm: {
     onSuccess: function(formType, result) {
       $('#postItModal').modal('hide');
+    },
+    onError: function(formType, error) {
+      console.log(error);
     }
   }
 });

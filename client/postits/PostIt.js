@@ -30,7 +30,7 @@ Template.PostIt.helpers({
   isEditingComment: function() {
     return Template.instance().isEditingComment.get();
   }
-})
+});
 
 Template.PostIt.events({
   'click .btn-action': function() {

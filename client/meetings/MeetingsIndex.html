@@ -27,7 +27,7 @@
   <table class='table'>
     <tbody>
       {{#each meeting in activeMeetings}}
-        <tr>{{> Meeting meeting}}</tr>
+        <tr>{{> Meeting meeting=meeting modalDataReactive=modalDataReactive}}</tr>
       {{else}}
         No upcoming retro meetings scheduled
       {{/each}}
@@ -37,7 +37,7 @@
   <table class='table'>
     <tbody>
     	{{#each meeting in pastMeetings}}
-        <tr>{{> Meeting meeting}}</tr>
+        <tr>{{> Meeting meeting=meeting modalDataReactive=modalDataReactive}}</tr>
     	{{/each}}
     </tbody>
   </table>
