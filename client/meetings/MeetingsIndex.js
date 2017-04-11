@@ -47,7 +47,6 @@ AutoForm.hooks({
 
   updateMeetingForm: {
     onSuccess: function(formType, result) {
-      console.log("On success");
       $('#meetingModal').modal('hide');
     },
     onError: function(formType, error) {
